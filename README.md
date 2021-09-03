@@ -20,8 +20,9 @@ Example-1 Expected Output:
 }
 
  
-Frameworks and Libraries used:
-1) Used Maven to manage any dependencies. 
-2) Used Java Streams to compute the result.
-3) Used the Spring framework to accelerate the development time for the web api. 
-4) Use of junit 5 for writting unit test cases
+Programming Languages, Frameworks and Libraries used:
+1) The project is programmed in JAVA 8 Language.
+2) Used Maven to manage any dependencies. 
+3) Used Java Streams to compute the result.
+4) Used the Spring framework to accelerate the development time for the web api. 
+5) Use of junit 5 for writting unit test cases
