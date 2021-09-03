@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 
 
@@ -174,5 +175,20 @@ public class HttpRequestTest {
 		
         Assertions.assertEquals(415, result.getStatusCodeValue());
         Assertions.assertEquals("Invalid Input.", result.getBody());
+	}
+	
+	/*Test Invalid input string. Ex: "abcdef"*/
+	@Test
+	public void testInvalidInputString() throws Exception{
+		final String baseUrl = "http://localhost:"+port+"/calculate";
+		URI uri = new URI(baseUrl);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "application/json");
+		HttpEntity<String> request = new HttpEntity<>("abcdef", headers);
+        
+		ResponseEntity<String> result = this.restTemplate.postForEntity(uri, request, String.class);
+		Assertions.assertEquals(400, result.getStatusCodeValue());
+        Assertions.assertEquals("Invalid Input or Content-Type.", result.getBody());
 	}
 }
