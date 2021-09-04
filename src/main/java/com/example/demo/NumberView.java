@@ -20,7 +20,7 @@ public class NumberView {
 	 * */
 	public NumberModel calulateResult(NumberModel number) {
 		List<Integer> numList = number.getData();
-		int sum = numList.stream().sorted(Comparator.reverseOrder()).limit(3).map(n -> n * n).reduce(0, Integer::sum);
+		int sum = (numList.stream().sorted(Comparator.reverseOrder()).limit(3).map(n -> n * n).reduce(0, Integer::sum));
 		BigDecimal bd = new BigDecimal(Math.sqrt(sum)).setScale(2, RoundingMode.HALF_UP);
 		number.setOutput(bd.toString());
 		return number;
