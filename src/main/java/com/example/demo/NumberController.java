@@ -22,7 +22,7 @@ public class NumberController {
 
 		NumberView numberView = new NumberView();
 		numberView.calulateResult(number);
-		return "{\"output\":"+number.getOutput()+"}";
+		return number.toString();
 	}
 
 	@ExceptionHandler(value = NullPointerException.class)
@@ -37,7 +37,7 @@ public class NumberController {
 
 	@ExceptionHandler(value = Exception.class)
 	public ResponseEntity<String> handleException(Exception ex) {
-		return new ResponseEntity<String>("Invalid Input or Content-Type.",
+		return new ResponseEntity<String>("Bad Request! Content type must be 'application/json'.",
 				HttpStatus.BAD_REQUEST);
 	}
 

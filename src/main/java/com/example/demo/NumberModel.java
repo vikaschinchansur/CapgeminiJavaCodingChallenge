@@ -15,8 +15,6 @@ public class NumberModel {
 		this.data = data;
 	}
 
-	
-
 	public String getOutput() {
 		return output;
 	}
@@ -25,9 +23,9 @@ public class NumberModel {
 		this.output = output;
 	}
 
-	/*Overriding the toString() method for printing the class variables in a pretty format.*/
+	/*Overriding the toString() method for printing the required format.*/
 	@Override
 	public String toString() {
-		return "NumberModel [data=" + data + ", output=" + output + "]";
+		return "{\"output\":"+output+"}";
 	}
 }
