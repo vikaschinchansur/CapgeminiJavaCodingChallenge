@@ -2,6 +2,9 @@ package com.example.demo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 /*Number Entity class. Has the getter & setter methods for data and output class variables.*/
 public class NumberModel {
 	private List<Integer> data;

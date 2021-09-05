@@ -27,7 +27,8 @@ public class HttpRequestTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
-	private NumberModel numberModel = new NumberModel();
+	@Autowired
+	private NumberModel numberModel;
 	
 	/*Function Name: makeAPICall
 	 * @Param-1: NumberModel numberModel
@@ -171,7 +172,14 @@ public class HttpRequestTest {
 	//Test case for REST API call with body.}
 	@Test
 	public void emptyBodyTest() throws Exception {
-		ResponseEntity<String> result = makeAPICall(numberModel);
+		final String baseUrl = "http://localhost:"+port+"/calculate";
+		URI uri = new URI(baseUrl);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "application/json");
+		HttpEntity<String> request = new HttpEntity<>("", headers);
+		
+		ResponseEntity<String> result = this.restTemplate.postForEntity(uri, request, String.class);
 		
         Assertions.assertEquals(415, result.getStatusCodeValue());
         Assertions.assertEquals("Invalid Input.", result.getBody());

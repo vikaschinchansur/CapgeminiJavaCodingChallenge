@@ -5,7 +5,10 @@ import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 /*Number view class. Contains various Business logic methods that work on Number Entity.*/
+@Component
 public class NumberView {
 	
 	/*
